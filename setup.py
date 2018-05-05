@@ -12,9 +12,9 @@ from Cython.Build import cythonize
 #     license = f.read()
 
 cython_extensions = [
-    Extension("cython_fortran_file.cython_fortran_file",
+    Extension("cython_fortran_file.cython_fortran_utils",
               ["cython_fortran_file/cython_fortran_utils.pyx"],
-              include_dirs=['cython_fortran_file'])
+              include_dirs=['cython_fortran_file/'])
 ]
 
 class sdist(_sdist):
@@ -47,7 +47,7 @@ setup(
     license=license,
     packages=find_packages(),
     package_data={
-        'cython_fortran_file': ['src/*.pxd'],
+        'cython_fortran_file': ['cython_fortran_file/*.pxd'],
     },
     install_requires=[
         'cython',
