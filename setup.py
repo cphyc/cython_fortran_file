@@ -32,7 +32,7 @@ cython_extensions = [
 
 setup(
     name='cython_fortran_file',
-    version='0.0.2',
+    version='0.0.3',
     description='An efficient package to read fortran-record files in Python.',
     long_description=readme,
     classifiers=[
@@ -48,7 +48,8 @@ setup(
     license=license,
     packages=find_packages(),
     package_data={
-        'cython_fortran_file': ['cython_fortran_file/*.pxd'],
+        'cython_fortran_file': ['cython_fortran_file/*.pyx',
+                                'cython_fortran_file/*.pxd'],
     },
     install_requires=[
         'cython',
