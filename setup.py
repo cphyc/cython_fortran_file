@@ -5,8 +5,8 @@ from setuptools.command.sdist import sdist as _sdist
 from setuptools.extension import Extension
 from Cython.Build import cythonize
 
-# with open('Readme.md') as f:
-#     readme = f.read()
+with open('Readme.md') as f:
+    readme = f.read()
 
 # with open('LICENSE') as f:
 #     license = f.read()
@@ -17,29 +17,30 @@ cython_extensions = [
               include_dirs=['cython_fortran_file/'])
 ]
 
-class sdist(_sdist):
-    # subclass setuptools source distribution builder to ensure cython
-    # generated C files are included in source distribution.
-    # See http://stackoverflow.com/a/18418524/1382869
-    def run(self):
-        # Make sure the compiled Cython files in the distribution are
-        # up-to-date
+# class sdist(_sdist):
+#     # subclass setuptools source distribution builder to ensure cython
+#     # generated C files are included in source distribution.
+#     # See http://stackoverflow.com/a/18418524/1382869
+#     def run(self):
+#         # Make sure the compiled Cython files in the distribution are
+#         # up-to-date
 
-        # Make sure the compiled Cython files in the distribution are up-to-date
-        from Cython.Build import cythonize
-        cythonize(cython_extensions)
+#         # Make sure the compiled Cython files in the distribution are up-to-date
+#         from Cython.Build import cythonize
+#         cythonize(cython_extensions)
 
 
 setup(
     name='cython_fortran_file',
     version='0.0.1',
     description='An efficient way of reading fortran-record files.',
-    # long_description=readme,
+    long_description=readme,
     classifiers=[
-        'Development status :: 1 - Alpha',
-        'License :: CC-By-SA2.0',
+        'Development Status :: 3 - Alpha',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Programming Language :: Cython',
         'Programming Language :: Python',
-        'Topic :: Fortran'
+        'Topic :: Utilities'
     ],
     author='Corentin Cadiou',
     author_email='contact@cphyc.me',
