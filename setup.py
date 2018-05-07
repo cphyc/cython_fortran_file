@@ -8,31 +8,27 @@ from Cython.Build import cythonize
 with open('Readme.md') as f:
     readme = f.read()
 
-# with open('LICENSE') as f:
-#     license = f.read()
+try:
+    import numpy as np
+    import cython
+    include_dirs = [np.get_include(), 'cython_fortran_file']
+except ImportError:
+    raise ImportError(
+"""Could not import cython or numpy. Building this package from source requires
+cython and numpy to be installed. Please install these packages using
+the appropriate package manager for your python environment.""")
+
 
 cython_extensions = [
     Extension("cython_fortran_file.cython_fortran_utils",
               ["cython_fortran_file/cython_fortran_utils.pyx"],
-              include_dirs=['cython_fortran_file/'])
+              include_dirs=include_dirs)
 ]
-
-# class sdist(_sdist):
-#     # subclass setuptools source distribution builder to ensure cython
-#     # generated C files are included in source distribution.
-#     # See http://stackoverflow.com/a/18418524/1382869
-#     def run(self):
-#         # Make sure the compiled Cython files in the distribution are
-#         # up-to-date
-
-#         # Make sure the compiled Cython files in the distribution are up-to-date
-#         from Cython.Build import cythonize
-#         cythonize(cython_extensions)
 
 
 setup(
     name='cython_fortran_file',
-    version='0.0.6',
+    version='0.0.7',
     description='An efficient package to read fortran-record files in Python.',
     long_description=readme,
     classifiers=[
