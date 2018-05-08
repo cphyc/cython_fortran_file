@@ -38,6 +38,14 @@ f.seek(0)
 f.close()
 ```
 
+It also supports `with` statement so that you can't forget to close the file handler
+```python
+with FF('/path/to/my/fortran/file.dat') as f:
+	f.skip(5)
+
+	data = f.read_vector('d')  # Read a vector of doubles (as usual)
+```
+
 ## Data types
 
 The argument of `read_vector` follows the convention of the python struct package (C convention). See https://docs.python.org/3.5/library/struct.html#format-characters for the full list. Here is a shorter version:
