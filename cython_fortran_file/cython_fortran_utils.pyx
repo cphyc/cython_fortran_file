@@ -196,7 +196,7 @@ cdef class FortranFile:
 
         Returns
         -------
-        data : int32
+        data : int64
             The value.
 
         Examples
