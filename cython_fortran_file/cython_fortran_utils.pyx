@@ -5,11 +5,10 @@ from libc.stdio cimport *
 import struct
 
 cdef INT32_SIZE = sizeof(np.int32_t)
-cdef INT64_SIZE = sizeof(np.int64_t)
 cdef DOUBLE_SIZE = sizeof(np.float64_t)
 
 cdef class FortranFile:
-    """This class provides facilities to i3nteract with files written
+    """This class provides facilities to interact with files written
     in fortran-record format.  Since this is a non-standard file
     format, whose contents depend on the compiler and the endianness
     of the machine, caution is advised. This code will assume that the
@@ -156,7 +155,7 @@ cdef class FortranFile:
 
         return s1
 
-    cpdef INT32_t read_int32(self) except? -1:
+    cpdef INT32_t read_int(self) except? -1:
         """Reads a single int32 from the file and return it.
 
         Returns
@@ -167,7 +166,8 @@ cdef class FortranFile:
         Examples
         --------
         >>> f = FortranFile("fort.3")
-        >>> rv = f.read_int64()  # Read a single int32 element
+        >>> rv = f.read_vector("d")  # Read a float64 array
+        >>> rv = f.read_vector("i")  # Read an int32 array
         """
 
         cdef INT32_t s1, s2
@@ -178,7 +178,7 @@ cdef class FortranFile:
 
         fread(&s1, INT32_SIZE, 1, self.cfile)
 
-        if s1 != INT32_SIZE:
+        if s1 != INT32_SIZE != 0:
             raise ValueError('Size obtained (%s) does not match with the expected '
                              'size (%s) of record' % (s1, INT32_SIZE))
 
