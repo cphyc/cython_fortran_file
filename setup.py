@@ -28,9 +28,10 @@ cython_extensions = [
 
 setup(
     name='cython_fortran_file',
-    version='0.0.9',
+    version='0.0.9b',
     description='An efficient package to read fortran-record files in Python.',
     long_description=readme,
+    long_description_content_type='text/markdown',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
@@ -40,7 +41,7 @@ setup(
     ],
     author='Corentin Cadiou',
     author_email='contact@cphyc.me',
-    url='https://github.com/cphyc/cython-fortran-file',
+    url='https://github.com/cphyc/cython_fortran_file',
     license=license,
     packages=find_packages(),
     package_data={
