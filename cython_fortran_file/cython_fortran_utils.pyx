@@ -5,6 +5,7 @@ from libc.stdio cimport *
 import struct
 
 cdef INT32_SIZE = sizeof(np.int32_t)
+cdef INT64_SIZE = sizeof(np.int64_t)
 cdef DOUBLE_SIZE = sizeof(np.float64_t)
 
 cdef class FortranFile:
