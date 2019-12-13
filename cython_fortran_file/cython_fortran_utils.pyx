@@ -387,9 +387,9 @@ cdef class FortranFile:
 
         This method has no effect if the file is already closed.
         """
-        self._closed = True
         if self._closed or self.cfile == NULL:
             return
+        self._closed = True
         fclose(self.cfile)
 
     def __dealloc__(self):
