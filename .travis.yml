@@ -18,9 +18,10 @@ env:
   global:
     - TWINE_USERNAME=cphyc
       # Note: TWINE_PASSWORD is set in Travis settings
+    - CIBW_BEFORE_BUILD='pip install cython numpy'
 
 install:
-  - python -m pip install twine cibuildwheel==1.1.0 cython numpy
+  - python -m pip install twine cibuildwheel==1.1.0
 
 script:
   # build the wheels, put them into './wheelhouse'
