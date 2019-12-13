@@ -28,6 +28,8 @@ cdef class FortranFile:
     def __cinit__(self, str fname):
         self.cfile = fopen(fname.encode('utf-8'), 'r')
         self._closed = False
+        if self.cfile == NULL:
+            raise IOError("Cannot open '%s'" % fname)
 
     def __enter__(self):
         return self
@@ -385,10 +387,10 @@ cdef class FortranFile:
 
         This method has no effect if the file is already closed.
         """
-        if self._closed:
+        self._closed = True
+        if self._closed or self.cfile == NULL:
             return
         fclose(self.cfile)
-        self._closed = True
 
     def __dealloc__(self):
         if not self._closed:
