@@ -8,6 +8,9 @@ from Cython.Build import cythonize
 with open('Readme.md') as f:
     readme = f.read()
 
+with open('LICENSE') as f:
+    license = f.read()
+
 try:
     import numpy as np
     import cython
