@@ -15,11 +15,9 @@ except ImportError:
 cython and numpy to be installed. Please install these packages using
 the appropriate package manager for your python environment.""")
 
-with open('Readme.md') as f:
-    readme = f.read()
-
-with open('LICENSE') as f:
-    license = f.read()
+def read_readme():
+    with open('Readme.md') as f:
+        return f.read()
 
 cython_extensions = [
     Extension("cython_fortran_file.cython_fortran_utils",
@@ -32,11 +30,12 @@ setup(
     name='cython_fortran_file',
     version='0.1.0',
     description='An efficient package to read fortran-record files in Python.',
-    long_description=readme,
+    long_description=read_readme(),
     long_description_content_type='text/markdown',
+    license='MIT',
     classifiers=[
-        'Development Status :: 3 - Alpha',
-        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Development Status :: 4 - Beta',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Cython',
         'Programming Language :: Python',
         'Topic :: Utilities'
@@ -44,7 +43,6 @@ setup(
     author='Corentin Cadiou',
     author_email='contact@cphyc.me',
     url='https://github.com/cphyc/cython_fortran_file',
-    license=license,
     packages=find_packages(),
     package_data={
         'cython_fortran_file': ['cython_fortran_file/*.pyx',
