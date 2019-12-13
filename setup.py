@@ -3,15 +3,9 @@
 from setuptools import setup, find_packages
 from setuptools.command.sdist import sdist as _sdist
 from setuptools.extension import Extension
-from Cython.Build import cythonize
-
-with open('Readme.md') as f:
-    readme = f.read()
-
-with open('LICENSE') as f:
-    license = f.read()
 
 try:
+    from Cython.Build import cythonize
     import numpy as np
     import cython
     include_dirs = [np.get_include(), 'cython_fortran_file']
@@ -21,6 +15,11 @@ except ImportError:
 cython and numpy to be installed. Please install these packages using
 the appropriate package manager for your python environment.""")
 
+with open('Readme.md') as f:
+    readme = f.read()
+
+with open('LICENSE') as f:
+    license = f.read()
 
 cython_extensions = [
     Extension("cython_fortran_file.cython_fortran_utils",
