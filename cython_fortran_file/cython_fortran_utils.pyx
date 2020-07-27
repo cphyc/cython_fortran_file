@@ -1,8 +1,11 @@
 cimport numpy as np
-import numpy as np
+
 import cython
-from libc.stdio cimport *
-import struct
+import numpy as np
+
+from libc.stdio cimport (FILE, SEEK_CUR, SEEK_SET, fclose, fopen, fread, fseek,
+                         ftell, fwrite)
+
 
 cdef INT32_SIZE = sizeof(np.int32_t)
 cdef INT64_SIZE = sizeof(np.int64_t)
