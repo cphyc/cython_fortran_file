@@ -15,6 +15,7 @@ cdef class FortranFile:
     cpdef INT32_t read_int(self) except? -1
     cpdef INT64_t read_int64(self) except? -1
     cpdef np.ndarray read_vector(self, str dtype)
+    cpdef INT64_t write_vector(self, np.ndarray array) except? -1
     cpdef np.ndarray direct_read_vector(self, str dtype, int len)
     cpdef INT64_t tell(self) except -1
     cpdef INT64_t seek(self, INT64_t pos, INT64_t whence=*) except -1

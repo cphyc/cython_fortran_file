@@ -25,8 +25,29 @@ cdef class FortranFile:
     This module has been inspired by scipy's FortranFile, especially
     the docstrings.
     """
-    def __cinit__(self, str fname):
-        self.cfile = fopen(fname.encode('utf-8'), 'r')
+    def __cinit__(self, str fname, str mode='r'):
+        cdef char m[2]
+        m[0] = ' '
+        m[1] = ' '
+        if mode == 'r':
+            m[0] = 'r'
+        elif mode == 'w':
+            m[0] = 'w'
+        elif mode == 'a':
+            m[0] = 'a'
+        elif mode == 'r+':
+            m[0] = 'r'
+            m[1] = '+'
+        elif mode == 'w+':
+            m[0] = 'w'
+            m[1] = '+'
+        elif mode == 'a+':
+            m[0] = 'a'
+            m[1] = '+'
+        else:
+            raise NotImplementedError
+
+        self.cfile = fopen(fname.encode('utf-8'), m)
         self._closed = False
         if self.cfile == NULL:
             raise IOError("Cannot open '%s'" % fname)
@@ -140,6 +161,39 @@ cdef class FortranFile:
                           'this record - check header dtype')
 
         return data
+
+
+    cpdef INT64_t write_vector(self, np.ndarray data) except? -1:
+        """Writes a record to the file.
+
+        Parameters
+        ----------
+        data : np.ndarray of contiguous data
+            The data to write to file. Can be any dtype.
+
+        Returns
+        -------
+        int32 : the position in the file
+        """
+
+        # Compute size of record
+        cdef INT32_t s1, size
+        cdef INT64_t pos, total_size
+
+        cdef size_t ret
+
+        data = np.require(data, requirements='C')
+
+        s1 = <INT32_t> data.nbytes         # total size
+        total_size = <INT64_t> data.size   # number of elements
+        element_size = <INT32_t> ((<INT64_t> s1) // total_size)
+        ret = fwrite(&s1, INT32_SIZE, 1, self.cfile)
+        ret = fwrite(<void *>data.data, element_size, total_size, self.cfile)
+        if ret != total_size:
+            raise IOError('Could not write to file.')
+        ret = fwrite(&s1, INT32_SIZE, 1, self.cfile)
+
+        return self.tell()
 
     cpdef peek_record_size(self):
         r""" This function returns the size of the next record and
