@@ -28,7 +28,7 @@ cython_extensions = [
 
 setup(
     name='cython_fortran_file',
-    version='0.1.0',
+    version='0.2.0',
     description='An efficient package to read fortran-record files in Python.',
     long_description=read_readme(),
     long_description_content_type='text/markdown',
