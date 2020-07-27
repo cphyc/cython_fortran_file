@@ -295,9 +295,9 @@ cdef class FortranFile:
                     raise ValueError("Expected a record of length %s, got %s (%s)" % (n, len(tmp), key))
             else:
                 tmp = self.read_vector(dtype)
-                if (len(tmp) == 0 and optional) or (n == -1):
+                if len(tmp) == 0 and optional:
                     continue
-                elif len(tmp) != n:
+                elif len(tmp) != n and n > 0:
                     raise ValueError("Expected a record of length %s, got %s (%s)" % (n, len(tmp), key))
 
                 if isinstance(key, tuple):
