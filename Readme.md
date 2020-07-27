@@ -18,7 +18,7 @@ Here is a simple demonstration:
 ```python
 from cython_fortran_file import FortranFile as FF
 
-f = FF('/path/to/my/fortran/file.dat')
+f = FF('/path/to/my/fortran/file.dat', mode='r')
 
 # Skip 5 records
 f.skip(5)
