@@ -21,7 +21,7 @@ env:
     - CIBW_BEFORE_BUILD='pip install cython numpy'
 
 install:
-  - python -m pip install twine cibuildwheel==1.1.0
+  - python -m pip install twine cibuildwheel==1.5.5
 
 script:
   # build the wheels, put them into './wheelhouse'
