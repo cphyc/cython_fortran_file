@@ -189,11 +189,12 @@ cdef class FortranFile:
 
         s1 = <INT32_t> data.nbytes         # total size
         total_size = <INT64_t> data.size   # number of elements
-        element_size = <INT32_t> ((<INT64_t> s1) // total_size)
         ret = fwrite(&s1, INT32_SIZE, 1, self.cfile)
-        ret = fwrite(<void *>data.data, element_size, total_size, self.cfile)
-        if ret != total_size:
-            raise IOError('Could not write to file.')
+        if total_size > 0:
+            element_size = <INT32_t> ((<INT64_t> s1) // total_size)
+            ret = fwrite(<void *>data.data, element_size, total_size, self.cfile)
+            if ret != total_size:
+                raise IOError('Could not write to file.')
         ret = fwrite(&s1, INT32_SIZE, 1, self.cfile)
 
         return self.tell()
