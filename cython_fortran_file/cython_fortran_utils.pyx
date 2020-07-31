@@ -3,8 +3,17 @@ cimport numpy as np
 import cython
 import numpy as np
 
-from libc.stdio cimport (FILE, SEEK_CUR, SEEK_SET, fclose, fopen, fread, fseek,
-                         ftell, fwrite)
+from libc.stdio cimport (
+    FILE,
+    SEEK_CUR,
+    SEEK_SET,
+    fclose,
+    fopen,
+    fread,
+    fseek,
+    ftell,
+    fwrite,
+)
 
 
 cdef INT32_SIZE = sizeof(np.int32_t)
