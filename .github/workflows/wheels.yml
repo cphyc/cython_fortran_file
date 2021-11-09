@@ -1,6 +1,13 @@
 name: Build
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    paths-ignore:
+      - Readme.md
+      - LICENSE
 
 jobs:
   build_wheels:
