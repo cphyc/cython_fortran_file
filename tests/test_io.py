@@ -1,6 +1,8 @@
+import os
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 from cython_fortran_file import FortranFile
 
@@ -65,6 +67,7 @@ def test_seeking():
         f.seek(ipos)
 
 
+@pytest.mark.skipif(os.name == "nt", reason="Unknown bug on write on Windows")
 def test_writing():
     content = [
         np.random.randint(10, size=100).astype("int32"),
