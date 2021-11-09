@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from setuptools import setup, find_packages
-from setuptools.command.sdist import sdist as _sdist
+from setuptools import setup
 from setuptools.extension import Extension
 
 try:
@@ -27,30 +26,5 @@ cython_extensions = [
 
 
 setup(
-    name='cython_fortran_file',
-    version='0.2.2',
-    description='An efficient package to read fortran-record files in Python.',
-    long_description=read_readme(),
-    long_description_content_type='text/markdown',
-    license='MIT',
-    classifiers=[
-        'Development Status :: 4 - Beta',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Cython',
-        'Programming Language :: Python',
-        'Topic :: Utilities'
-    ],
-    author='Corentin Cadiou',
-    author_email='contact@cphyc.me',
-    url='https://github.com/cphyc/cython_fortran_file',
-    packages=find_packages(),
-    package_data={
-        'cython_fortran_file': ['cython_fortran_file/*.pyx',
-                                'cython_fortran_file/*.pxd'],
-    },
-    install_requires=[
-        'cython',
-        'numpy'
-    ],
     ext_modules=cythonize(cython_extensions)
 )
