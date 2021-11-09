@@ -18,17 +18,17 @@ Here is a simple demonstration:
 ```python
 from cython_fortran_file import FortranFile as FF
 
-f = FF('/path/to/my/fortran/file.dat', mode='r')
+f = FF("/path/to/my/fortran/file.dat", mode="r")
 
 # Skip 5 records
 f.skip(5)
 
 # Read one record (an array of `double`)
-data = f.read_vector('d')
+data = f.read_vector("d")
 assert data.dtype == np.float64
 
 # Read one record (an array of signed `int`)
-data = f.read_vector('i')
+data = f.read_vector("i")
 assert data.dtype == np.int32
 
 # Read one *single* int. This will fail if there is more to read!
@@ -42,10 +42,10 @@ f.close()
 
 It also supports `with` statement so that you can't forget to close the file handler
 ```python
-with FF('/path/to/my/fortran/file.dat') as f:
-	f.skip(5)
+with FF("/path/to/my/fortran/file.dat") as f:
+    f.skip(5)
 
-	data = f.read_vector('d')  # Read a vector of doubles (as usual)
+    data = f.read_vector("d")  # Read a vector of doubles (as usual)
 ```
 
 ## Data types

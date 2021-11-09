@@ -1,5 +1,6 @@
-import numpy as np
 from pathlib import Path
+
+import numpy as np
 
 from cython_fortran_file import FortranFile
 
@@ -12,33 +13,41 @@ def check_vector(f, expected, dtype):
     vec = f.read_vector(dtype)
     np.testing.assert_equal(vec, expected)
 
+
 def test_reading():
     with FortranFile(test_file, mode="r") as f:
         assert f.read_int() == 1234
         assert f.read_int64() == 123456789
-        check_vector(f, np.array([1.], dtype="float32"), "float32")
-        check_vector(f, np.array([2.], dtype="float64"), "float64")
+        check_vector(f, np.array([1.0], dtype="float32"), "float32")
+        check_vector(f, np.array([2.0], dtype="float64"), "float64")
 
         check_vector(f, np.array([5, 6], dtype="int32"), "int32")
         check_vector(f, np.array([7, 8], dtype="int64"), "int64")
-        check_vector(f, np.array([1., 2.], dtype="float32"), "float32")
-        check_vector(f, np.array([3., 4.], dtype="float64"), "float64")
+        check_vector(f, np.array([1.0, 2.0], dtype="float32"), "float32")
+        check_vector(f, np.array([3.0, 4.0], dtype="float64"), "float64")
+
 
 def test_reading_attrs():
     attrs = (
         ("first", 1, "i"),
         (("a", "b", "c", "d"), 4, "int32"),
         (("x1", "x2", "x3", "x4"), 4, "float64"),
-        ("test", 4, "c")
+        ("test", 4, "c"),
     )
     with FortranFile(test_file_attrs, mode="r") as f:
         ret = f.read_attrs(attrs)
 
     expected = {
         "first": 1,
-        "a": 1, "b": 2, "c": 3, "d": 4,
-        "x1": 1., "x2": 2., "x3": 3., "x4": 4.,
-        "test": np.array([b"t", b"e", b"s", b"t"], dtype="|S1")
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "d": 4,
+        "x1": 1.0,
+        "x2": 2.0,
+        "x3": 3.0,
+        "x4": 4.0,
+        "test": np.array([b"t", b"e", b"s", b"t"], dtype="|S1"),
     }
 
     for key in expected.keys():
