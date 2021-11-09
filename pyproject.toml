@@ -6,8 +6,3 @@ requires = [
   "Cython>=0.29.21",
   "oldest-supported-numpy"
 ]
-
-[tool.cibuildtest]
-test-requires = "pytest"
-test-command = "pytest"
-skip = "pp*"
