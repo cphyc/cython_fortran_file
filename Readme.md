@@ -1,6 +1,6 @@
 # Cython fortran-file
 
-[![Build Status](https://travis-ci.com/cphyc/cython_fortran_file.svg?branch=master)](https://travis-ci.com/cphyc/cython_fortran_file)
+[![Build and Test](https://github.com/cphyc/cython_fortran_file/actions/workflows/build-test.yaml/badge.svg)](https://github.com/cphyc/cython_fortran_file/actions/workflows/build-test.yaml)
 
 This package is a fast and easy reader for record-based binary format, as written by Fortran.
 
