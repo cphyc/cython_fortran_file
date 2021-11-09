@@ -25,4 +25,13 @@ program generate_testfile
     write(unit) i8
     write(unit) x4
     write(unit) x8
+    close(unit)
+
+    open(file="testfile_attrs.bin", newunit=unit, form="unformatted")
+    ! Write scalars
+    write(unit) 1
+    write(unit) 1, 2, 3, 4
+    write(unit) 1d0, 2d0, 3d0, 4d0
+    write(unit) "test"
+    close(unit)
 end program

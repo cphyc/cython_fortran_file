@@ -1,7 +1,10 @@
 ALL: testfile.bin
 
-generate_testfile: generate_testfile.f90
+generate_testfiles: generate_testfiles.f90
 	gfortran $^ -o $@
 
-testfile.bin: generate_testfile
+testfile.bin: generate_testfiles
+	./$^
+
+testfile_attrs.bin: generate_testfiles
 	./$^
