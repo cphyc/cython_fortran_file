@@ -37,7 +37,7 @@ cdef class FortranFile:
     This module has been inspired by scipy's FortranFile, especially
     the docstrings.
     """
-    def __cinit__(self, str fname, str mode='r'):
+    def __cinit__(self, fname, str mode='r'):
         cdef char m[2]
         m[0] = ' '
         m[1] = ' '
@@ -59,7 +59,7 @@ cdef class FortranFile:
         else:
             raise NotImplementedError
 
-        self.cfile = fopen(fname.encode('utf-8'), m)
+        self.cfile = fopen(str(fname).encode('utf-8'), m)
         self._closed = False
         if self.cfile == NULL:
             raise IOError("Cannot open '%s'" % fname)
