@@ -3,6 +3,11 @@ requires = [
   "setuptools>=19.6",
   # see https://github.com/numpy/numpy/pull/18389
   "wheel>=0.36.2",
-  "Cython>=0.29.21,<3.0",
+  "Cython>=0.29.21",
   "oldest-supported-numpy"
 ]
+
+[tool.cibuildtest]
+test-requires = "pytest"
+test-command = "pytest"
+skip = "pp*"
