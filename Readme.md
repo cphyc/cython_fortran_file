@@ -1,6 +1,8 @@
 # Cython fortran-file
 
 [![Build and Test](https://github.com/cphyc/cython_fortran_file/actions/workflows/build-test.yaml/badge.svg)](https://github.com/cphyc/cython_fortran_file/actions/workflows/build-test.yaml)
+[![PyPI](https://img.shields.io/pypi/v/cython_fortran_file)](https://pypi.org/project/cython_fortran_file)
+[![Conda-forge](https://img.shields.io/conda/vn/conda-forge/cython-fortran-file.svg)](https://anaconda.org/conda-forge/cython-fortran-file)
 
 This package is a fast and easy reader for record-based binary format, as written by Fortran.
 
