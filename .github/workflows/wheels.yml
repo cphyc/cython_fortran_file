@@ -9,6 +9,11 @@ on:
       - Readme.md
       - LICENSE
 
+env:
+  CIBW_TEST_REQUIRES: pytest
+  CIBW_TEST_COMMAND: "pytest"
+  CIBW_SKIP: pp*
+
 jobs:
   build_wheels:
     name: Build wheels on ${{ matrix.os }}
