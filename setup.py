@@ -14,12 +14,6 @@ cython and numpy to be installed. Please install these packages using
 the appropriate package manager for your python environment."""
     )
 
-
-def read_readme():
-    with open("Readme.md") as f:
-        return f.read()
-
-
 cython_extensions = [
     Extension(
         "cython_fortran_file.cython_fortran_utils",
