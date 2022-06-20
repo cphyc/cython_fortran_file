@@ -22,7 +22,7 @@ jobs:
       # Used to host cibuildwheel
       - uses: actions/setup-python@v2
 
-      - uses: pypa/cibuildwheel@2.6.0
+      - uses: pypa/cibuildwheel@2.7.0
         env:
           CIBW_SKIP: pp*macosx*
 
