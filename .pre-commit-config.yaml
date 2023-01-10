@@ -39,6 +39,6 @@ repos:
     -   id: setup-cfg-fmt
         args: [--max-py-version, '3.11']
 -   repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.206
+    rev: v0.0.216
     hooks:
       - id: ruff
