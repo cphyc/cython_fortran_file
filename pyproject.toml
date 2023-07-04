@@ -13,7 +13,7 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Topic :: Utilities",
 ]
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 dependencies = [
     "cython",
     "numpy",
@@ -71,11 +71,11 @@ sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
 
 [tool.black]
 line-length = 88
-target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
+target-version = ['py38', 'py39', 'py310', 'py311']
 
 
 [tool.ruff]
 # Enable Pyflakes `E` and `F` codes by default.
 select = ["E", "C", "F", "U", "B", "A", "YTT", "S", "N"]
 ignore = ["S101"]
-target-version = 'py37'
+target-version = 'py38'
