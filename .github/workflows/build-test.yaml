@@ -22,7 +22,7 @@ jobs:
           # windows-latest,  # fails with error 127, skipping for the moment
           ubuntu-latest,
         ]
-        python-version: ["3.8", "3.9", "3.10"]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Install Python
