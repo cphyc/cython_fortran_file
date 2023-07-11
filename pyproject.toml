@@ -1,6 +1,6 @@
 [project]
 name = "cython_fortran_file"
-version = "0.2.5"
+version = "0.2.6"
 description = "An efficient package to read fortran-record files in Python."
 authors = [{name = "Corentin Cadiou", email = "contact@cphyc.me"}]
 license = {text = "MIT"}
