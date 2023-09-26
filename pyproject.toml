@@ -22,11 +22,12 @@ dependencies = [
 
 [build-system]
 requires = [
-  "setuptools>=19.6",
+  "setuptools>=42",
   # see https://github.com/numpy/numpy/pull/18389
   "wheel>=0.36.2",
-  "Cython>=0.29.21",
-  "oldest-supported-numpy"
+  "Cython>=3.0.0",
+  "numpy; python_full_version<'3.12.0rc1'",
+  "numpy>=1.26.0rc1; python_full_version>='3.12.0rc1'"
 ]
 
 [project.readme]
