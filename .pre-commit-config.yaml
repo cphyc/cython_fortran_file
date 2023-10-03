@@ -29,11 +29,11 @@ repos:
     hooks:
     - id: mypy
 -   repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v2.4.0
+    rev: v2.5.0
     hooks:
     -   id: setup-cfg-fmt
         args: [--max-py-version, '3.11']
 -   repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.291
+    rev: v0.0.292
     hooks:
       - id: ruff
