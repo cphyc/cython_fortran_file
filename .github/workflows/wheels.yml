@@ -44,10 +44,11 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: artifacts-source-${{ matrix.os }}
+          name: artifacts-source
           path: dist/*.tar.gz
 
   upload_pypi:
+    name: Upload to PyPI
     needs: [build_wheels, build_sdist]
     runs-on: ubuntu-latest
     environment:
