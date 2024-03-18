@@ -28,9 +28,8 @@ jobs:
         env:
           CIBW_SKIP: "pp* *_i686"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v3
         with:
-          name: artifacts-wheels-${{ matrix.os }}
           path: ./wheelhouse/*.whl
 
   build_sdist:
@@ -42,9 +41,8 @@ jobs:
       - name: Build sdist
         run: pipx run build --sdist
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v3
         with:
-          name: artifacts-source
           path: dist/*.tar.gz
 
   upload_pypi:
@@ -61,12 +59,11 @@ jobs:
     # alternatively, to publish when a GitHub Release is created, use the following rule:
     # if: github.event_name == 'release' && github.event.action == 'published'
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v3
         with:
           # unpacks default artifact into dist/
           # if `name: artifact` is omitted, the action will create extra parent dir
           name: artifacts-*
-          merge-multiple: true
           path: dist
 
       - uses: pypa/gh-action-pypi-publish@v1.8.14
