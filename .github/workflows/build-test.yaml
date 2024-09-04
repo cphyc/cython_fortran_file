@@ -22,24 +22,17 @@ jobs:
           # windows-latest,  # fails with error 127, skipping for the moment
           ubuntu-latest,
         ]
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Install Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         submodules: recursive
         fetch-depth: 0
-    - uses: s-weigand/setup-conda@v1
-      if: matrix.os == 'windows-latest'
-      with:
-        update-conda: true
-        conda-channels: conda-forge
-        activate-conda: true
-        python-version: ${{matrix.python-version}}
     - name: Install package
       shell: bash
       run: |

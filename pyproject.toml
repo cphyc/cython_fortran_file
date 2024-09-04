@@ -1,6 +1,6 @@
 [project]
 name = "cython_fortran_file"
-version = "0.2.6"
+version = "0.2.7"
 description = "An efficient package to read fortran-record files in Python."
 authors = [{name = "Corentin Cadiou", email = "contact@cphyc.me"}]
 license = {text = "MIT"}
@@ -13,7 +13,7 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Topic :: Utilities",
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 dependencies = [
     "cython",
     "numpy",
@@ -26,8 +26,7 @@ requires = [
   # see https://github.com/numpy/numpy/pull/18389
   "wheel>=0.36.2",
   "Cython>=3.0.0",
-  "numpy; python_full_version<'3.12.0rc1'",
-  "numpy>=1.26.0rc1; python_full_version>='3.12.0rc1'"
+  "numpy"
 ]
 
 [project.readme]
@@ -59,24 +58,15 @@ test = "pytest"
 [tool.pytest.ini_options]
 collect_ignore = "['setup.py']"
 
-
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-combine_as_imports = true
-line_length = 88
-known_third_party = ["numpy","pytest"]
-sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
-
-[tool.black]
-line-length = 88
-target-version = ['py38', 'py39', 'py310', 'py311']
-
-
 [tool.ruff]
 # Enable Pyflakes `E` and `F` codes by default.
-select = ["E", "C", "F", "U", "B", "A", "YTT", "S", "N"]
+select = ["E", "C", "F", "UP", "B", "A", "YTT", "S", "N", "I"]
 ignore = ["S101"]
-target-version = 'py38'
+target-version = 'py39'
+line-length = 88
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
