@@ -5,7 +5,7 @@ minimum_pre_commit_version: "1.15.0"
 repos:
 
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
     - id: trailing-whitespace
     - id: end-of-file-fixer
@@ -21,7 +21,7 @@ repos:
     -   id: setup-cfg-fmt
         args: [--max-py-version, '3.12']
 -   repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.6.3
+    rev: v0.6.9
     hooks:
       - id: ruff
         args: [ --fix ]
