@@ -16,12 +16,12 @@ repos:
     hooks:
     - id: mypy
 -   repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v2.8.0
+    rev: v3.1.0
     hooks:
     -   id: setup-cfg-fmt
         args: [--max-py-version, '3.12']
 -   repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.13.2
+    rev: v0.14.2
     hooks:
       - id: ruff
         args: [ --fix ]
